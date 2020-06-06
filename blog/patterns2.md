@@ -2,8 +2,6 @@
 
 Vue响应式系统实现原理
 
-<img src="/Users/xusenyue/Downloads/未命名文件.png" alt="未命名文件" style="zoom:200%;" />
-
 observer：是数据监听器也是发布者
 
 Dep：用于收集订阅者和通知订阅者
