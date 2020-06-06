@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>模拟图片上传/下载图片</title>
+    <style>
+        label {
+            display: block;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            border: 1px solid #000;
+        }
+
+        input[type='file'] {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <form action="" method="post" enctype="multipart/form-data"> -->
+        <div>
+            <label for="avatar">上传图片</label>
+            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+        </div>
+        <div class="preview">
+            <p>No files currently selected for upload</p>
+        </div>
+        <div>
+            <button class="downLoad">下载图片</button>
+        </div>
+    <!-- </form> -->
+       
+    <script>
+        let input = document.querySelector('#avatar')
+        let preview = document.querySelector('.preview')
+        let downLoad = document.querySelector('.downLoad')
+        input.addEventListener('change', updateImageDisplay);
+        downLoad.addEventListener('click', downLoadImg)
+        const fileTypes = [
+            'image/jpeg',
+            'image/png'
+        ];
+
+        function validFileType(file) {
+            return fileTypes.includes(file.type);
+        }
+        function returnFileSize(number) {
+            if (number < 1024) {
+                return number + 'bytes';
+            } else if (number >= 1024 && number < 1048576) {
+                return (number / 1024).toFixed(1) + 'KB';
+            } else if (number >= 1048576) {
+                return (number / 1048576).toFixed(1) + 'MB';
+            }
+        }
+        function updateImageDisplay() {
+            while (preview.firstChild) {
+                preview.removeChild(preview.firstChild);
+            }
+            const curFile = input.files[0];
+            const para = document.createElement('p');
+            if (validFileType(curFile)) {
+                para.textContent = `File name ${curFile.name}, file size ${returnFileSize(curFile.size)}.`;
+                const image = new Image();
+                image.file = curFile
+                const fileReader = new FileReader()
+                // image.src = URL.createObjectURL(curFile); // 生成预览地址
+                // img.onload = function () {
+                //     window.URL.revokeObjectURL(this.src);
+                // }
+                fileReader.readAsDataURL(curFile)
+                fileReader.onload=function(){
+                    image.src = this.result
+                }
+                preview.appendChild(image);
+                preview.appendChild(para);
+            }
+        }
+        function downLoadImg(){
+            let file = preview.firstChild.file
+            if(file) {
+                // let link = document.createElement('a');
+                // link.href = window.URL.createObjectURL(file);
+                // link.download = ''; 
+                // link.click(); 
+                const fileReader = new FileReader()
+                fileReader.readAsDataURL(file)
+                fileReader.onload=function(){
+                    let link = document.createElement('a');
+                    link.href = this.result;
+                    link.download = ''; 
+                    link.click();  
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

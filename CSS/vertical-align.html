@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, .5);
+            text-align: center;
+            font-size: 0;
+            white-space: nowrap;
+            overflow: auto;
+        }
+
+        .container:after {
+            content: '';
+            display: inline-block;
+            height: 90%;
+            vertical-align: middle;
+        }
+
+        .dialog {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: left;
+            font-size: 14px;
+            white-space: normal;
+        }
+        .content{
+            width: 2000px;
+            height: 2000px;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="dialog">
+           <div class="content"></div>
+        </div>
+    </div>
+</body>
+
+</html>
