@@ -43,6 +43,8 @@
 
 [渲染函数](https://ccokl.github.io/blog/vue4)
 
+[Vuex 阅读](https://ccokl.github.io/blog/vuex)
+
 ### 设计模式
 
 [单例模式](https://ccokl.github.io/blog/patterns1)
