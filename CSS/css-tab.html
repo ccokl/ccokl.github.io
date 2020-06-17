@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .box {
+            height: 10em;
+            border: 1px solid #ddd;
+            overflow: hidden;
+        }
+        .list {
+            height: 100%;
+            background: #ddd;
+            position: relative;
+        }
+        .list > input {
+            position: absolute; 
+            top:0;
+            height: 100%;
+            width: 1px;
+            border:0; 
+            padding: 0; 
+            margin: 0;
+            clip: rect(0 0 0 0);
+        } 
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="list"><input id="one">1</div>
+        <div class="list"><input id="two">2</div>
+        <div class="list"><input id="three">3</div>
+        <div class="list"><input id="four">4</div>
+    </div>
+    <div class="link">
+        <label class="click" for="one">1</label>
+        <label class="click" for="two">2</label>
+        <label class="click" for="three">3</label>
+        <label class="click" for="four">4</label>
+    </div> 
+    
+</body>
+
+</html>
